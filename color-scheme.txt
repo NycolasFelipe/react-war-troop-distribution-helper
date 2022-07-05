@@ -1,0 +1,23 @@
+/* CSV */
+070707,3772ff,df2935,fdca40,e6e8e6
+
+/* With # */
+#070707, #3772ff, #df2935, #fdca40, #e6e8e6
+
+/* Array */
+["070707","3772ff","df2935","fdca40","e6e8e6"]
+
+/* Object */
+{"Rich Black FOGRA 39":"070707","Blue Crayola":"3772ff","Rose Madder":"df2935","Sunglow":"fdca40","Platinum":"e6e8e6"}
+
+/* Extended Array */
+[{"name":"Rich Black FOGRA 39","hex":"070707","rgb":[7,7,7],"cmyk":[0,0,0,97],"hsb":[0,0,3],"hsl":[0,0,3],"lab":[2,0,0]},{"name":"Blue Crayola","hex":"3772ff","rgb":[55,114,255],"cmyk":[78,55,0,0],"hsb":[222,78,100],"hsl":[222,100,61],"lab":[52,30,-75]},{"name":"Rose Madder","hex":"df2935","rgb":[223,41,53],"cmyk":[0,82,76,13],"hsb":[356,82,87],"hsl":[356,74,52],"lab":[49,68,40]},{"name":"Sunglow","hex":"fdca40","rgb":[253,202,64],"cmyk":[0,20,75,1],"hsb":[44,75,99],"hsl":[44,98,62],"lab":[84,5,71]},{"name":"Platinum","hex":"e6e8e6","rgb":[230,232,230],"cmyk":[1,0,1,9],"hsb":[120,1,91],"hsl":[120,4,91],"lab":[92,-1,1]}]
+
+/* XML */
+<palette>
+  <color name="Rich Black FOGRA 39" hex="070707" r="7" g="7" b="7" />
+  <color name="Blue Crayola" hex="3772ff" r="55" g="114" b="255" />
+  <color name="Rose Madder" hex="df2935" r="223" g="41" b="53" />
+  <color name="Sunglow" hex="fdca40" r="253" g="202" b="64" />
+  <color name="Platinum" hex="e6e8e6" r="230" g="232" b="230" />
+</palette>
