@@ -8,26 +8,18 @@ function Button({
   buttonBgColor = '#808080',
   buttonBorderColor = '#808080',
   color = '#fff',
-  pointerEvents = 'default',
-  showTerritoryWindow,
+  disabled,
 }) {
-  if (showTerritoryWindow === 'block') {
-    buttonBorderColor = '#424242';
-    buttonBgColor = 'transparent';
-    color = '#424242';
-    pointerEvents = 'none';
-  }
-
   return (
     <C.Button
-      type='button'
       onClick={onClick}
+      type='button'
       buttonWidth={buttonWidth}
       buttonHeight={buttonHeight}
       buttonBgColor={buttonBgColor}
       buttonBorderColor={buttonBorderColor}
       color={color}
-      pointerEvents={pointerEvents}
+      disabled={disabled}
     >
       {text}
     </C.Button>

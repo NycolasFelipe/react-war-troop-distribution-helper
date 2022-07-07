@@ -1,12 +1,10 @@
-import { useState } from 'react';
-
+import { useMemo, useState } from 'react';
+import TerritoriesContext from '../../contexts/TerritoriesContext';
 import * as C from './styles';
-import Button from '../../components/Button';
-import Title from '../../components/Title';
-import TerritoryItem from '../../components/TerritoryItem';
+import ContainerTerritories from '../../components/ContainerTerritories';
 
 function Home() {
-  const [initialTerritories, setInitialTerritories] = useState([
+  const [territories, setTerritories] = useState([
     ['Europe', 'Iceland'],
     ['Europe', 'Sweden'],
     ['Europe', 'Moscow'],
@@ -50,52 +48,17 @@ function Home() {
     ['Africa', 'South Africa'],
     ['Africa', 'Madagascar'],
   ]);
-
-  const [showTerritoryWindow, setShowTerritoryWindow] = useState('none');
-
-  const addTerritoryWindow = () => {
-    showTerritoryWindow === 'block'
-      ? setShowTerritoryWindow('none')
-      : setShowTerritoryWindow('block');
-  };
+  const territoriesValue = useMemo(
+    () => ({ territories, setTerritories }),
+    [territories]
+  );
 
   return (
     <C.Container>
       <C.ContainerGameSettings>
-        <C.ContainerTerritories>
-          <C.TerritoriesContent>
-            <C.TerritoriesTitle>
-              <Title text={'Continent'} />
-              <Title text={'| Territory'} />
-            </C.TerritoriesTitle>
-            <C.TerritoriesItems>
-              {initialTerritories.map((item, index) => (
-                <TerritoryItem
-                  key={index}
-                  continent={item[0]}
-                  territory={item[1]}
-                />
-              ))}
-            </C.TerritoriesItems>
-            <C.TerritoriesAddWindow
-              showTerritoryWindow={showTerritoryWindow}
-            ></C.TerritoriesAddWindow>
-          </C.TerritoriesContent>
-          <C.TerritoriesButtons>
-            <Button
-              onClick={() => addTerritoryWindow()}
-              text={
-                showTerritoryWindow === 'block' ? 'Finish' : 'Add Territory'
-              }
-              buttonBgColor={'#2e8b2e'}
-            />
-            <Button
-              text={'Delete Item'}
-              buttonBgColor={'#ca1e1e'}
-              showTerritoryWindow={showTerritoryWindow}
-            />
-          </C.TerritoriesButtons>
-        </C.ContainerTerritories>
+        <TerritoriesContext.Provider value={territoriesValue}>
+          <ContainerTerritories />
+        </TerritoriesContext.Provider>
       </C.ContainerGameSettings>
     </C.Container>
   );

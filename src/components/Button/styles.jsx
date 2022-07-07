@@ -8,7 +8,7 @@ export const Button = styled.button`
   border-radius: 5px;
   color: ${(props) => props.color};
   cursor: pointer;
-  pointer-events: ${(props) => props.pointerEvents};
+  transition: all 0.2s ease;
 
   &:hover {
     background: ${(props) => props.buttonBgColor};
@@ -19,4 +19,14 @@ export const Button = styled.button`
   &:active {
     transform: scale(1.01);
   }
+
+  ${(props) => {
+    if (props.disabled) {
+      return `
+        border: 1px solid #424242;
+        color: #424242;
+        pointer-events: none;
+      `;
+    }
+  }}
 `;

@@ -1,6 +1,6 @@
 import * as C from './styles';
 
-function TerritoryItem({ continent, territory }) {
+function TerritoryItem({ continent, territory, onClick, deleteItemActive }) {
   let backgroundColor = '';
   switch (continent) {
     case 'Europe':
@@ -24,7 +24,11 @@ function TerritoryItem({ continent, territory }) {
   }
 
   return (
-    <C.Container backgroundColor={backgroundColor}>
+    <C.Container
+      onClick={onClick}
+      deleteItemActive={deleteItemActive}
+      backgroundColor={backgroundColor}
+    >
       <C.Continent>{continent}</C.Continent>
       <C.Territory>{territory}</C.Territory>
     </C.Container>
