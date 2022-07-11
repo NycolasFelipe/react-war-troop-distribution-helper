@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ContainerTerritories = styled.div`
-  width: 280px;
+  width: 25%;
   height: 100%;
 `;
 
@@ -132,6 +132,5 @@ export const TerritoriesButtons = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 5px;
-  padding: 10px 0;
   height: 20%;
 `;

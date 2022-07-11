@@ -11,7 +11,7 @@ import TerritoryItem from '../TerritoryItem';
 function ContainerTerritories() {
   const { territories, setTerritories } = useContext(TerritoriesContext);
   const [territoryName, setTerritoryName] = useState('');
-  const [territoryContinent, setTerritoryContinent] = useState('Europe');
+  const [territoryContinent, setTerritoryContinent] = useState('Africa');
 
   const [addTerritoryWindow, setAddTerritoryWindow] = useState(false);
   const [showAddAlert, setShowAddAlert] = useState(false);
@@ -109,12 +109,12 @@ function ContainerTerritories() {
             label={'labelAddTerritoryContinent'}
             text={'Continent'}
             options={[
-              ['Europe', 'europe'],
-              ['Asia', 'asia'],
-              ['Oceania', 'oceania'],
-              ['North America', 'northAmerica'],
-              ['South America', 'southAmerica'],
               ['Africa', 'africa'],
+              ['Asia', 'asia'],
+              ['Europe', 'europe'],
+              ['North America', 'northAmerica'],
+              ['Oceania', 'oceania'],
+              ['South America', 'southAmerica'],
             ]}
             onChange={(e) =>
               setTerritoryContinent(

@@ -2,64 +2,68 @@ import { useMemo, useState } from 'react';
 import TerritoriesContext from '../../contexts/TerritoriesContext';
 import * as C from './styles';
 import ContainerTerritories from '../../components/ContainerTerritories';
+import ContainerSettings from '../../components/ContainerSettings';
 
 function Home() {
+  //#region Territories List
   const [territories, setTerritories] = useState([
-    ['Europe', 'Iceland'],
-    ['Europe', 'Sweden'],
-    ['Europe', 'Moscow'],
-    ['Europe', 'Poland'],
-    ['Europe', 'Germany'],
-    ['Europe', 'France'],
-    ['Europe', 'England'],
-    ['Asia', 'Middle East'],
-    ['Asia', 'India'],
-    ['Asia', 'Vietnam'],
+    ['Africa', 'Algeria'],
+    ['Africa', 'Congo'],
+    ['Africa', 'Egypt'],
+    ['Africa', 'Madagascar'],
+    ['Africa', 'South Africa'],
+    ['Africa', 'Sudan'],
+    ['Asia', 'Aral'],
     ['Asia', 'China'],
-    ['Asia', 'Japan'],
-    ['Asia', 'Siberia'],
-    ['Asia', 'Vladivostok'],
     ['Asia', 'Dudinka'],
+    ['Asia', 'India'],
+    ['Asia', 'Japan'],
+    ['Asia', 'Middle East'],
     ['Asia', 'Mongolia'],
     ['Asia', 'Omsk'],
-    ['Asia', 'Aral'],
+    ['Asia', 'Siberia'],
     ['Asia', 'Tchita'],
+    ['Asia', 'Vietnam'],
+    ['Asia', 'Vladivostok'],
+    ['Europe', 'England'],
+    ['Europe', 'France'],
+    ['Europe', 'Germany'],
+    ['Europe', 'Iceland'],
+    ['Europe', 'Moscow'],
+    ['Europe', 'Poland'],
+    ['Europe', 'Sweden'],
+    ['North America', 'Alaska'],
+    ['North America', 'California'],
+    ['North America', 'Greenland'],
+    ['North America', 'Labrador'],
+    ['North America', 'Mackenzie'],
+    ['North America', 'Mexico'],
+    ['North America', 'New York'],
+    ['North America', 'Ottawa'],
+    ['North America', 'Vancouver'],
     ['Oceania', 'Australia'],
+    ['Oceania', 'Borneo'],
     ['Oceania', 'New Guinea'],
     ['Oceania', 'Sumatra'],
-    ['Oceania', 'Borneo'],
-    ['North America', 'Greenland'],
-    ['North America', 'Alaska'],
-    ['North America', 'Mackenzie'],
-    ['North America', 'Vancouver'],
-    ['North America', 'California'],
-    ['North America', 'Ottawa'],
-    ['North America', 'Labrador'],
-    ['North America', 'New York'],
-    ['North America', 'Mexico'],
+    ['South America', 'Argentina'],
     ['South America', 'Brazil'],
     ['South America', 'Peru'],
-    ['South America', 'Argentina'],
     ['South America', 'Venezuela'],
-    ['Africa', 'Algeria'],
-    ['Africa', 'Egypt'],
-    ['Africa', 'Sudan'],
-    ['Africa', 'Congo'],
-    ['Africa', 'South Africa'],
-    ['Africa', 'Madagascar'],
   ]);
   const territoriesValue = useMemo(
     () => ({ territories, setTerritories }),
-    [territories]
+    [territories.sort()]
   );
+  //#endregion
 
   return (
     <C.Container>
-      <C.ContainerGameSettings>
-        <TerritoriesContext.Provider value={territoriesValue}>
+      <TerritoriesContext.Provider value={territoriesValue}>
+        <C.ContainerGameSettings>
           <ContainerTerritories />
-        </TerritoriesContext.Provider>
-      </C.ContainerGameSettings>
+          <ContainerSettings />
+        </C.ContainerGameSettings>
+      </TerritoriesContext.Provider>
     </C.Container>
   );
 }

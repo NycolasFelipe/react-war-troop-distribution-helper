@@ -13,5 +13,10 @@ export const Title = styled.h1`
         width: ${props.titleWidth}
       `;
     }
+    if (props.fontSize) {
+      return `
+        font-size: ${props.fontSize}
+      `;
+    }
   }}
 `;

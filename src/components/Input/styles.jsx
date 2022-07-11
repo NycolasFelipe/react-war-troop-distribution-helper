@@ -9,6 +9,30 @@ export const Input = styled.input`
   border: none;
   background: #313131;
   padding-left: 5px;
+
+  ${(props) => {
+    if (props.alignCenter) {
+      return `
+        text-align: center;
+        padding-left: 0;
+        `;
+    }
+  }}
+  ${(props) => {
+    if (props.borderRadius) {
+      return `
+          border-radius: ${props.borderRadius};
+      `;
+    }
+  }}
+  ${(props) => {
+    if (props.lockValue) {
+      return `
+        color: #a1a1a1;
+        pointer-events: none;
+      `;
+    }
+  }}
 `;
 
 export const Label = styled.label`

@@ -14,7 +14,7 @@ export const Container = styled.div`
 `;
 
 export const ContainerGameSettings = styled.div`
-  border: 1px solid blue;
+  display: flex;
   width: 100%;
   height: 70%;
 `;

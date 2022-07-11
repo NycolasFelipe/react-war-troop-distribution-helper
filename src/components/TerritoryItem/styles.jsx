@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 98%;
   background: ${(props) => props.backgroundColor};
-  border-radius: 5px;
   padding: 3px 5px;
   font-size: 0.8rem;
 
@@ -24,6 +24,12 @@ export const Container = styled.div`
         }
       `;
     }
+    if (props.divHeight) {
+      return `
+        height: ${props.divHeight};
+        line-height: 1;
+      `;
+    }
   }}
 `;
 
@@ -34,6 +40,9 @@ export const Continent = styled.div`
 `;
 
 export const Territory = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
   color: #fff;
   width: 45%;
   pointer-events: none;
