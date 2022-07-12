@@ -46,6 +46,7 @@ function ContainerSettings() {
       return (
         <Input
           value={filteredTerritories(array[value][0])}
+          readOnly={true}
           alignCenter={true}
           borderRadius={'0'}
           text={text}
@@ -64,26 +65,81 @@ function ContainerSettings() {
     }
   };
 
+  const territoryItem = (continent) => {
+    return (
+      <TerritoryItem
+        divHeight={'auto'}
+        hideTerritory={true}
+        continent={continent}
+      />
+    );
+  };
+
+  const [playerItem1, setPlayerItem1] = useState(true);
+  const [playerItem2, setPlayerItem2] = useState(true);
+  const [playerItem3, setPlayerItem3] = useState(true);
+  const [playerItem4, setPlayerItem4] = useState(false);
+  const [playerItem5, setPlayerItem5] = useState(false);
+  const [playerItem6, setPlayerItem6] = useState(false);
+
+  const playerItem = (player, defaultColor) => {
+    const playerItems = [
+      ['playerItem1', playerItem1, setPlayerItem1],
+      ['playerItem2', playerItem2, setPlayerItem2],
+      ['playerItem3', playerItem3, setPlayerItem3],
+      ['playerItem4', playerItem4, setPlayerItem4],
+      ['playerItem5', playerItem5, setPlayerItem5],
+      ['playerItem6', playerItem6, setPlayerItem6],
+    ];
+    const filteredPlayer = playerItems.filter((item) => item[0] === player);
+
+    const handleCheckedPlayer = (action) => {
+      if (action === 'set') {
+        filteredPlayer[0][2](!filteredPlayer[0][1]);
+      } else if (action === 'get') {
+        return filteredPlayer[0][1];
+      }
+    };
+
+    return (
+      <C.PlayerItem>
+        <C.PlayerItemColor defaultChecked={handleCheckedPlayer('get')}>
+          <Input defaultValue={defaultColor} borderRadius='0' />
+        </C.PlayerItemColor>
+        <C.PlayerItemName defaultChecked={handleCheckedPlayer('get')}>
+          <Input borderRadius='0' />
+        </C.PlayerItemName>
+        <C.PlayerDottedLine />
+        <C.PlayerCheckBox>
+          <CheckBox
+            checked={handleCheckedPlayer('get')}
+            onClick={() => handleCheckedPlayer('set')}
+          />
+        </C.PlayerCheckBox>
+      </C.PlayerItem>
+    );
+  };
+
   return (
     <C.ContainerSettings>
       <Title text={'Game Settings'} fontSize={'1rem'} />
       <C.BonusSettings>
         <C.BonusContinent>
           <C.BonusHeader>
-            <C.BonusTitle>Continent</C.BonusTitle>
+            <C.Title>Continent</C.Title>
           </C.BonusHeader>
           <C.TerritoryItems>
-            <TerritoryItem divHeight={'auto'} continent={'Africa'} />
-            <TerritoryItem divHeight={'auto'} continent={'Asia'} />
-            <TerritoryItem divHeight={'auto'} continent={'Europe'} />
-            <TerritoryItem divHeight={'auto'} continent={'North America'} />
-            <TerritoryItem divHeight={'auto'} continent={'Oceania'} />
-            <TerritoryItem divHeight={'auto'} continent={'South America'} />
+            {territoryItem('Africa')}
+            {territoryItem('Asia')}
+            {territoryItem('Europe')}
+            {territoryItem('North America')}
+            {territoryItem('Oceania')}
+            {territoryItem('South America')}
           </C.TerritoryItems>
         </C.BonusContinent>
         <C.BonusMin>
           <C.BonusHeader>
-            <C.BonusTitle>Min. Bonus</C.BonusTitle>
+            <C.Title>Min. Bonus</C.Title>
             <CheckBox onClick={() => setMinBonusActive(!minBonusActive)} />
             <ButtonInfo
               text={
@@ -110,7 +166,7 @@ function ContainerSettings() {
         </C.BonusMin>
         <C.BonusTotal>
           <C.BonusHeader>
-            <C.BonusTitle>Total Bonus</C.BonusTitle>
+            <C.Title>Total Bonus</C.Title>
             <ButtonInfo
               text={
                 'Number of additional troops received when there is total dominance of a continent.'
@@ -135,6 +191,23 @@ function ContainerSettings() {
           </C.BonusTotalRight>
         </C.BonusTotal>
       </C.BonusSettings>
+      <C.PlayerSettings>
+        <C.PlayerHeader>
+          <C.Title>Players</C.Title>
+        </C.PlayerHeader>
+        <C.PlayerItemsHeader>
+          <C.Title>Color</C.Title>
+          <C.Title>Player Name</C.Title>
+        </C.PlayerItemsHeader>
+        <C.PlayerItems>
+          {playerItem('playerItem1', 'Black')}
+          {playerItem('playerItem2', 'Blue')}
+          {playerItem('playerItem3', 'Green')}
+          {playerItem('playerItem4', 'Red')}
+          {playerItem('playerItem5', 'White')}
+          {playerItem('playerItem6', 'Yellow')}
+        </C.PlayerItems>
+      </C.PlayerSettings>
     </C.ContainerSettings>
   );
 }

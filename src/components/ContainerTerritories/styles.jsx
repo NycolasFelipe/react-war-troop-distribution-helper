@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerTerritories = styled.div`
   width: 25%;
+  min-width: 240px;
   height: 100%;
 `;
 

@@ -37,6 +37,14 @@ export const Continent = styled.div`
   color: #fff;
   width: 55%;
   pointer-events: none;
+
+  ${(props) => {
+    if (props.hideTerritory) {
+      return `
+        width: 100%;
+      `;
+    }
+  }}
 `;
 
 export const Territory = styled.div`
@@ -46,4 +54,12 @@ export const Territory = styled.div`
   color: #fff;
   width: 45%;
   pointer-events: none;
+
+  ${(props) => {
+    if (props.hideTerritory) {
+      return `
+        width: 0;
+      `;
+    }
+  }}
 `;

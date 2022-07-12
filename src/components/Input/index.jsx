@@ -8,7 +8,9 @@ function Input({
   placeholder,
   alignCenter,
   onChange,
+  readOnly,
   borderRadius,
+  inputWidth,
   lockValue,
 }) {
   return (
@@ -21,7 +23,9 @@ function Input({
         defaultValue={defaultValue}
         alignCenter={alignCenter}
         onChange={onChange}
+        readOnly={readOnly}
         borderRadius={borderRadius}
+        inputWidth={inputWidth}
         lockValue={lockValue}
       />
     </C.Label>

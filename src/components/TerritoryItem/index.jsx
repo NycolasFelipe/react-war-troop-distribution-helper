@@ -6,6 +6,7 @@ function TerritoryItem({
   divHeight,
   onClick,
   deleteItemActive,
+  hideTerritory,
 }) {
   let backgroundColor = '';
   switch (continent) {
@@ -36,8 +37,8 @@ function TerritoryItem({
       deleteItemActive={deleteItemActive}
       backgroundColor={backgroundColor}
     >
-      <C.Continent>{continent}</C.Continent>
-      <C.Territory>{territory}</C.Territory>
+      <C.Continent hideTerritory={hideTerritory}>{continent}</C.Continent>
+      <C.Territory hideTerritory={hideTerritory}>{territory}</C.Territory>
     </C.Container>
   );
 }

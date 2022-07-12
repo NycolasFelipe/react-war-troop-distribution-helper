@@ -33,6 +33,13 @@ export const Input = styled.input`
       `;
     }
   }}
+  ${(props) => {
+    if (props.inputWidth) {
+      return `
+        width: ${props.inputWidth}
+      `;
+    }
+  }}
 `;
 
 export const Label = styled.label`
