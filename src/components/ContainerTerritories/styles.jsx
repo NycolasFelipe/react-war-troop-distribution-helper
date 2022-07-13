@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 
 export const ContainerTerritories = styled.div`
-  width: 25%;
+  width: 20%;
   min-width: 240px;
   height: 100%;
+
+  @media (max-width: 1050px) {
+    width: 30%;
+  }
 `;
 
 export const TerritoriesContent = styled.div`
   border: 1px solid #fff;
   height: 80%;
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
   padding: 5px 10px;

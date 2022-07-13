@@ -3,6 +3,7 @@ import TerritoriesContext from '../../contexts/TerritoriesContext';
 import * as C from './styles';
 import ContainerTerritories from '../../components/ContainerTerritories';
 import ContainerSettings from '../../components/ContainerSettings';
+import ContainerTurns from '../../components/ContainerTurns';
 
 function Home() {
   //#region Territories List
@@ -62,6 +63,7 @@ function Home() {
         <C.ContainerGameSettings>
           <ContainerTerritories />
           <ContainerSettings />
+          <ContainerTurns />
         </C.ContainerGameSettings>
       </TerritoriesContext.Provider>
     </C.Container>

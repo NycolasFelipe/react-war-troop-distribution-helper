@@ -135,12 +135,14 @@ function ContainerTerritories() {
         <Button
           text={addTerritoryWindow ? 'Finish' : 'Add Territory'}
           buttonBgColor={'#2e8b2e'}
+          buttonWidth={'100%'}
           disabled={deleteItemActive}
           onClick={() => setAddTerritoryWindow(!addTerritoryWindow)}
         />
         <Button
           text={deleteItemActive ? 'Cancel' : 'Delete Item'}
           buttonBgColor={'#ca1e1e'}
+          buttonWidth={'100%'}
           disabled={addTerritoryWindow}
           onClick={() => setDeleteItemActive(!deleteItemActive)}
         />
