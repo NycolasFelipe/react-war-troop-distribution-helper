@@ -1,20 +1,29 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  * {
+    transition: all 0.2s ease;
+  }
+`;
 
 export const ButtonInfo = styled.p`
-  color: #aaa;
+  color: #888888;
   cursor: pointer;
-  transition: all 0.2s ease;
 
   &:hover {
     color: #fff;
   }
+  ${(props) => {
+    if (props.showInfo) {
+      return `
+        color: #fff;
+      `;
+    }
+  }}
 `;
 
 export const InfoWindow = styled.div`
-  background: #181818;
-  height: 0;
+  background: transparent;
   width: 100%;
   position: absolute;
   right: 0;
@@ -22,16 +31,21 @@ export const InfoWindow = styled.div`
   overflow: hidden;
   color: transparent;
   font-size: 0.8rem;
-  padding: 0 3px;
+  padding: 3px 6px;
   border-radius: 5px;
-  transition: height 0.3s ease;
+  pointer-events: none;
+  * {
+    transition: background 0.2s ease;
+  }
 
   ${(props) => {
     if (props.showInfo) {
       return `
-        height: 280%;
+        background: #181818;
         color: #fff;
       `;
     }
   }}
 `;
+
+export const InfoText = styled.div``;

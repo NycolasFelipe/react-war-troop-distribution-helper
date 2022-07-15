@@ -27,7 +27,7 @@ export const CurrentTurn = styled.div`
   margin-bottom: 10px;
   width: 100%;
   border-radius: 5px;
-  border: 1px solid #fff;
+  border: 1px solid #424242;
   min-height: 80px;
 `;
 
@@ -69,7 +69,7 @@ export const TradeCards = styled.div`
   height: 77%;
   width: 100%;
   border-radius: 5px;
-  border: 1px solid #fff;
+  border: 1px solid #424242;
   min-height: 190px;
   * {
     transition: all 0.2s ease;

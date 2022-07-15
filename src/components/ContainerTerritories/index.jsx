@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useContext } from 'react';
-import TerritoriesContext from '../../contexts/TerritoriesContext';
+import DataContext from '../../contexts/DataContext';
 import * as C from './styles';
 import Button from '../Button';
 import Input from '../Input';
@@ -9,7 +9,7 @@ import Title from '../Title';
 import TerritoryItem from '../TerritoryItem';
 
 function ContainerTerritories() {
-  const { territories, setTerritories } = useContext(TerritoriesContext);
+  const { territories, setTerritories } = useContext(DataContext);
   const [territoryName, setTerritoryName] = useState('');
   const [territoryContinent, setTerritoryContinent] = useState('Africa');
 

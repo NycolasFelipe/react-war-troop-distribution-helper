@@ -11,7 +11,7 @@ export const ContainerTerritories = styled.div`
 `;
 
 export const TerritoriesContent = styled.div`
-  border: 1px solid #fff;
+  border: 1px solid #424242;
   height: 80%;
   width: 100%;
   margin: 0 auto;

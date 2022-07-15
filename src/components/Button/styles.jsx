@@ -6,6 +6,8 @@ export const Button = styled.button`
   border: 1px solid ${(props) => props.buttonBorderColor};
   background: transparent;
   border-radius: 5px;
+  font-size: ${(props) => props.fontSize};
+  line-height: 1;
   color: ${(props) => props.color};
   cursor: pointer;
   transition: all 0.2s ease;

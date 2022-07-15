@@ -9,7 +9,7 @@ export const ContainerSettings = styled.div`
   min-width: 360px;
   height: 100%;
   background: transparent;
-  border: 1px solid #fff;
+  border: 1px solid #424242;
   border-radius: 5px;
   padding: 5px 10px;
 `;
@@ -101,6 +101,9 @@ export const BonusTotal = styled.div`
   justify-content: space-around;
   width: 33%;
   height: 100%;
+  * {
+    transition: all 0.2s ease;
+  }
 `;
 
 export const BonusTotalLeft = styled.div`
@@ -141,7 +144,7 @@ export const PlayerItems = styled.div`
   flex-wrap: wrap;
   padding-right: 10px;
   padding-left: 10px;
-  height: 70%;
+  height: 12%;
 `;
 
 export const PlayerItem = styled.div`

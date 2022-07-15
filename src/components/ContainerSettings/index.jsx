@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useContext } from 'react';
-import TerritoriesContext from '../../contexts/TerritoriesContext';
+import DataContext from '../../contexts/DataContext';
 import * as C from './styles';
 import CheckBox from '../CheckBox';
 import Title from '../Title';
@@ -9,7 +9,7 @@ import ButtonInfo from '../ButtonInfo';
 import TerritoryItem from '../TerritoryItem';
 
 function ContainerSettings() {
-  const { territories, setTerritories } = useContext(TerritoriesContext);
+  const { territories, setTerritories } = useContext(DataContext);
   const filteredTerritories = (continent) => {
     return territories.filter((item) => item[0] === continent).length;
   };
@@ -75,46 +75,69 @@ function ContainerSettings() {
     );
   };
 
-  const [playerItem1, setPlayerItem1] = useState(true);
-  const [playerItem2, setPlayerItem2] = useState(true);
-  const [playerItem3, setPlayerItem3] = useState(true);
-  const [playerItem4, setPlayerItem4] = useState(false);
-  const [playerItem5, setPlayerItem5] = useState(false);
-  const [playerItem6, setPlayerItem6] = useState(false);
+  const { players, setPlayers } = useContext(DataContext);
 
-  const playerItem = (player, defaultColor) => {
-    const playerItems = [
-      ['playerItem1', playerItem1, setPlayerItem1],
-      ['playerItem2', playerItem2, setPlayerItem2],
-      ['playerItem3', playerItem3, setPlayerItem3],
-      ['playerItem4', playerItem4, setPlayerItem4],
-      ['playerItem5', playerItem5, setPlayerItem5],
-      ['playerItem6', playerItem6, setPlayerItem6],
-    ];
-    const filteredPlayer = playerItems.filter((item) => item[0] === player);
+  const playerItem1 = useState(players[0]);
+  const playerItem2 = useState(players[1]);
+  const playerItem3 = useState(players[2]);
+  const playerItem4 = useState(players[3]);
+  const playerItem5 = useState(players[4]);
+  const playerItem6 = useState(players[5]);
 
-    const handleCheckedPlayer = (action) => {
-      if (action === 'set') {
-        filteredPlayer[0][2](!filteredPlayer[0][1]);
-      } else if (action === 'get') {
-        return filteredPlayer[0][1];
+  const playerItem = (player) => {
+    let playerIndex = player[0].playerIndex;
+    let playerColor = player[0].playerColor;
+    let playerName = player[0].playerName;
+    let playerActive = player[0].playerActive;
+
+    const setPlayerActive = () => {
+      setPlayers(
+        players.map((item) => {
+          if (item.playerIndex === playerIndex) {
+            item.playerActive = !item.playerActive;
+          }
+          return item;
+        })
+      );
+    };
+
+    const handleValueChange = (e, type) => {
+      let value = e.target.value;
+      if (value !== '') {
+        setPlayers(
+          players.map((item) => {
+            if (item.playerIndex === playerIndex) {
+              if (type === 'playerColor') {
+                item.playerColor = value;
+              } else if (type === 'playerName') {
+                item.playerName = value;
+              }
+            }
+            return item;
+          })
+        );
       }
     };
 
     return (
       <C.PlayerItem>
-        <C.PlayerItemColor defaultChecked={handleCheckedPlayer('get')}>
-          <Input defaultValue={defaultColor} borderRadius='0' />
+        <C.PlayerItemColor defaultChecked={playerActive}>
+          <Input
+            defaultValue={playerColor}
+            borderRadius='0'
+            onChange={(e) => handleValueChange(e, 'playerColor')}
+          />
         </C.PlayerItemColor>
-        <C.PlayerItemName defaultChecked={handleCheckedPlayer('get')}>
-          <Input borderRadius='0' />
+        <C.PlayerItemName defaultChecked={playerActive}>
+          <Input
+            defaultValue={playerName}
+            borderRadius='0'
+            onChange={(e) => handleValueChange(e, 'playerName')}
+          />
         </C.PlayerItemName>
         <C.PlayerDottedLine />
         <C.PlayerCheckBox>
-          <CheckBox
-            checked={handleCheckedPlayer('get')}
-            onClick={() => handleCheckedPlayer('set')}
-          />
+          <CheckBox checked={playerActive} onClick={() => setPlayerActive()} />
         </C.PlayerCheckBox>
       </C.PlayerItem>
     );
@@ -199,14 +222,12 @@ function ContainerSettings() {
           <C.Title>Color</C.Title>
           <C.Title>Player Name</C.Title>
         </C.PlayerItemsHeader>
-        <C.PlayerItems>
-          {playerItem('playerItem1', 'Black')}
-          {playerItem('playerItem2', 'Blue')}
-          {playerItem('playerItem3', 'Green')}
-          {playerItem('playerItem4', 'Red')}
-          {playerItem('playerItem5', 'White')}
-          {playerItem('playerItem6', 'Yellow')}
-        </C.PlayerItems>
+        <C.PlayerItems>{playerItem(playerItem1)}</C.PlayerItems>
+        <C.PlayerItems>{playerItem(playerItem2)}</C.PlayerItems>
+        <C.PlayerItems>{playerItem(playerItem3)}</C.PlayerItems>
+        <C.PlayerItems>{playerItem(playerItem4)}</C.PlayerItems>
+        <C.PlayerItems>{playerItem(playerItem5)}</C.PlayerItems>
+        <C.PlayerItems>{playerItem(playerItem6)}</C.PlayerItems>
       </C.PlayerSettings>
     </C.ContainerSettings>
   );

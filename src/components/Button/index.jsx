@@ -7,6 +7,7 @@ function Button({
   buttonHeight = '2rem',
   buttonBgColor = '#808080',
   buttonBorderColor = '#808080',
+  fontSize,
   color = '#fff',
   disabled,
 }) {
@@ -18,6 +19,7 @@ function Button({
       buttonHeight={buttonHeight}
       buttonBgColor={buttonBgColor}
       buttonBorderColor={buttonBorderColor}
+      fontSize={fontSize}
       color={color}
       disabled={disabled}
     >
