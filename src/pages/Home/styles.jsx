@@ -11,6 +11,7 @@ export const Container = styled.div`
   background-size: cover;
   margin: 0 auto;
   margin-top: 5vh;
+  position: relative;
 `;
 
 export const ContainerGameSettings = styled.div`

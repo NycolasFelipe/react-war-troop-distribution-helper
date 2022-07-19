@@ -49,9 +49,9 @@ export const BonusContinent = styled.div`
 export const TerritoryItems = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 25px;
-  gap: 3px;
-  height: 100%;
+  margin-top: 18px;
+  border-radius: 5px;
+  border: 1px solid transparent;
 `;
 
 export const BonusMin = styled.div`

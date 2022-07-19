@@ -3,9 +3,12 @@ import * as C from './styles';
 function TerritoryItem({
   continent,
   territory,
+  borderRadius,
   divHeight,
   onClick,
   deleteItemActive,
+  selected,
+  addTerritory,
   hideTerritory,
 }) {
   let backgroundColor = '';
@@ -31,14 +34,20 @@ function TerritoryItem({
   }
 
   return (
-    <C.Container
-      divHeight={divHeight}
-      onClick={onClick}
-      deleteItemActive={deleteItemActive}
-      backgroundColor={backgroundColor}
-    >
-      <C.Continent hideTerritory={hideTerritory}>{continent}</C.Continent>
-      <C.Territory hideTerritory={hideTerritory}>{territory}</C.Territory>
+    <C.Container>
+      <C.ItemSelected selected={selected}>🗸</C.ItemSelected>
+      <C.Item
+        borderRadius={borderRadius}
+        divHeight={divHeight}
+        onClick={onClick}
+        deleteItemActive={deleteItemActive}
+        selected={selected}
+        addTerritory={addTerritory}
+        backgroundColor={backgroundColor}
+      >
+        <C.Continent hideTerritory={hideTerritory}>{continent}</C.Continent>
+        <C.Territory hideTerritory={hideTerritory}>{territory}</C.Territory>
+      </C.Item>
     </C.Container>
   );
 }

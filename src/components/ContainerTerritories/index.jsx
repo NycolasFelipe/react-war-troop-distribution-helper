@@ -21,7 +21,7 @@ function ContainerTerritories() {
 
   const checkTerritoryDuplicate = (territoryName) => {
     for (let i = 0; i < territories.length; i++) {
-      if (territories[i][1] === territoryName) return true;
+      if (territories[i].territory === territoryName) return true;
     }
   };
 
@@ -50,7 +50,12 @@ function ContainerTerritories() {
         // Adiciona o território à lista de territórios
         setTerritories((territories) => [
           ...territories,
-          [territoryContinent, territoryName],
+          {
+            index: territories[territories.length - 1].index + 1,
+            selected: false,
+            continent: territoryContinent,
+            territory: territoryName,
+          },
         ]);
         // Limpar o input de território
         setTerritoryName('');
@@ -63,11 +68,10 @@ function ContainerTerritories() {
   const deleteItem = (e) => {
     if (deleteItemActive) {
       const territoryDeleted = e.target.innerText.split('\n')[1];
-      const filteredTerritories = territories.filter(
-        (item) => item[1] !== territoryDeleted
+      const filteredTerritory = territories.filter(
+        (item) => item.territory !== territoryDeleted
       );
-      setTerritories(filteredTerritories);
-      console.log(filteredTerritories);
+      setTerritories(filteredTerritory);
     }
   };
 
@@ -87,8 +91,8 @@ function ContainerTerritories() {
           {territories.map((item, index) => (
             <TerritoryItem
               key={index}
-              continent={item[0]}
-              territory={item[1]}
+              continent={item.continent}
+              territory={item.territory}
               onClick={(e) => deleteItem(e)}
               deleteItemActive={deleteItemActive}
             />

@@ -59,10 +59,13 @@ export const AddAlert = styled.div`
 export const TerritoriesItems = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 1px;
   margin-top: 6px;
   overflow-y: auto;
+  overflow-x: hidden;
   height: 85%;
+  border-radius: 5px;
+  border: 1px solid #424242;
 
   &::-webkit-scrollbar {
     width: 6px;

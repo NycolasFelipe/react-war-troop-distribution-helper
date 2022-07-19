@@ -1,8 +1,25 @@
 import * as C from './styles';
 import Button from '../Button';
 import TerritoryItem from '../TerritoryItem';
+import DataContext from '../../contexts/DataContext';
+import { useContext } from 'react';
 
-function ContainerPlayer({ title, playerName, territories, playerActive }) {
+function ContainerPlayer({
+  title,
+  playerName,
+  playerActive,
+  playerIndex,
+  territories,
+}) {
+  const { setAddTerritoryWindow } = useContext(DataContext);
+
+  const showAddTerritoryWindow = (bool) => {
+    setAddTerritoryWindow({
+      active: bool,
+      playerIndex: playerIndex,
+    });
+  };
+
   return (
     <C.ContainerPlayer playerActive={playerActive}>
       <C.PlayerHeader>
@@ -29,6 +46,7 @@ function ContainerPlayer({ title, playerName, territories, playerActive }) {
           buttonWidth={'100%'}
           buttonBgColor={'#2e8b2e'}
           fontSize={'0.7rem'}
+          onClick={() => showAddTerritoryWindow(true)}
         />
         <Button
           text={'Delete Item'}

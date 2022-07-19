@@ -9,9 +9,9 @@ import ButtonInfo from '../ButtonInfo';
 import TerritoryItem from '../TerritoryItem';
 
 function ContainerSettings() {
-  const { territories, setTerritories } = useContext(DataContext);
+  const { territories } = useContext(DataContext);
   const filteredTerritories = (continent) => {
-    return territories.filter((item) => item[0] === continent).length;
+    return territories.filter((item) => item.continent === continent).length;
   };
 
   const minBonus = [
@@ -48,7 +48,6 @@ function ContainerSettings() {
           value={filteredTerritories(array[value][0])}
           readOnly={true}
           alignCenter={true}
-          borderRadius={'0'}
           text={text}
           lockValue={lockValue}
         />
@@ -58,7 +57,6 @@ function ContainerSettings() {
         <Input
           defaultValue={array[value][bonus]}
           alignCenter={true}
-          borderRadius={'0'}
           text={text}
         />
       );
@@ -68,7 +66,8 @@ function ContainerSettings() {
   const territoryItem = (continent) => {
     return (
       <TerritoryItem
-        divHeight={'auto'}
+        borderRadius={'5px'}
+        divHeight={'19px'}
         hideTerritory={true}
         continent={continent}
       />
@@ -124,14 +123,12 @@ function ContainerSettings() {
         <C.PlayerItemColor defaultChecked={playerActive}>
           <Input
             defaultValue={playerColor}
-            borderRadius='0'
             onChange={(e) => handleValueChange(e, 'playerColor')}
           />
         </C.PlayerItemColor>
         <C.PlayerItemName defaultChecked={playerActive}>
           <Input
             defaultValue={playerName}
-            borderRadius='0'
             onChange={(e) => handleValueChange(e, 'playerName')}
           />
         </C.PlayerItemName>

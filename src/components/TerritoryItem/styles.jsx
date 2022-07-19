@@ -2,11 +2,19 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  width: 100%;
+`;
+
+export const Item = styled.div`
+  flex: 1;
+  display: flex;
   flex-wrap: wrap;
   width: 98%;
   background: ${(props) => props.backgroundColor};
-  padding: 3px 5px;
+  border-radius: ${(props) => props.borderRadius};
+  padding: 3px 8px;
   font-size: 0.8rem;
+  user-select: none;
 
   transition: width 0.1s ease;
 
@@ -24,13 +32,47 @@ export const Container = styled.div`
         }
       `;
     }
+    if (props.selected) {
+      return `
+        width: 88%;
+      `;
+    }
     if (props.divHeight) {
       return `
         height: ${props.divHeight};
         line-height: 1;
       `;
     }
+    if (props.addTerritory) {
+      return `
+        &:hover {
+          cursor: pointer;
+          background: #2e8b2e;
+        }
+      `;
+    }
   }}
+`;
+
+export const ItemSelected = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: #2e8b2e;
+  width: 0%;
+  overflow: hidden;
+  user-select: none;
+
+  transition: all 0.3s ease;
+
+  ${(props) => {
+    if (props.selected) {
+      return `
+      width: 12%;
+    `;
+    }
+  }};
 `;
 
 export const Continent = styled.div`
@@ -42,6 +84,11 @@ export const Continent = styled.div`
     if (props.hideTerritory) {
       return `
         width: 100%;
+      `;
+    }
+    if (props.selected) {
+      return `
+        width: 40%;
       `;
     }
   }}
@@ -59,6 +106,11 @@ export const Territory = styled.div`
     if (props.hideTerritory) {
       return `
         width: 0;
+      `;
+    }
+    if (props.selected) {
+      return `
+        width: 35%;
       `;
     }
   }}

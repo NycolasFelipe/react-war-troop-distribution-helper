@@ -11,8 +11,9 @@ function ContainerPlayers() {
       <ContainerPlayer
         title={players[playerIndex].playerColor}
         playerName={` @ ${players[playerIndex].playerName}`}
-        territories={territories}
         playerActive={players[playerIndex].playerActive}
+        playerIndex={playerIndex}
+        territories={territories}
       />
     );
   };
